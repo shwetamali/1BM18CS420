@@ -1,4 +1,4 @@
-a=int(input("Enter an integers"))
+a=int(input("Enter an integers:"))
 LRange=list(range(1,a+1))
 ans=[]
 for num in LRange:
