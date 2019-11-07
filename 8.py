@@ -3,22 +3,22 @@ conn=sqlite3.connect("stud1.db")
 def create():
     print("Opened database successfully")
     print("Table creation:")
-    conn.execute('''CREATE TABLE std(ID INT PRIMARY KEY NOT NULL,
+    conn.execute('''CREATE TABLE std1111(ID INT PRIMARY KEY NOT NULL,
                  NAME TEXT NOT NULL,
                  SEM INT NOT NULL,
                  DEPT CHAR(25));''')
     print("Table created successfully")
 def insert():
     print("Inserting student information:")
-    conn.execute("INSERT INTO std(ID,NAME,SEM,DEPT)VALUES(1,'riya',5,'CSE')")
-    conn.execute("INSERT INTO std(ID,NAME,SEM,DEPT)VALUES(2,'ira',6,'ECE')")
-    conn.execute("INSERT INTO std(ID,NAME,SEM,DEPT)VALUES(3,'siya',5,'EEE')")
-    conn.execute("INSERT INTO std(ID,NAME,SEM,DEPT)VALUES(4,'ana',4,'MECH')")
+    conn.execute("INSERT INTO std1111(ID,NAME,SEM,DEPT)VALUES(1,'riya',5,'CSE')")
+    conn.execute("INSERT INTO std1111(ID,NAME,SEM,DEPT)VALUES(2,'ira',6,'ECE')")
+    conn.execute("INSERT INTO std1111(ID,NAME,SEM,DEPT)VALUES(3,'siya',5,'EEE')")
+    conn.execute("INSERT INTO std1111(ID,NAME,SEM,DEPT)VALUES(4,'ana',4,'MECH')")
     conn.commit()
     print("Values inserted successfully","\t")
 def display():
     print("Displays student information:")
-    cursor=conn.execute("SELECT * from std")
+    cursor=conn.execute("SELECT * from std1111")
     print("Table contents are:")
     for row in cursor:
         print("ID=",row[0])
@@ -29,24 +29,25 @@ def display():
     conn.commit()
 def query():
     print("Retrives data of specific student")
-    cursor=conn.execute("SELECT * from std where ID=5")
+    cursor=conn.execute("SELECT * from std1111 where ID=1")
+    conn.commit()
     print("Query result:")
     res=cursor.fetchall()
     print(res)
 def update():
     print("Updating student information:")
-    conn.execute("UPDATE std SET SEM=3 where ID=3")
+    conn.execute("UPDATE std1111 SET SEM=3 where ID=3")
     conn.commit()
     print("Upadted table contents are:")
-    cursor=conn.execute("SELECT * from std")
+    cursor=conn.execute("SELECT * from std1111")
     res=cursor.fetchall()
     print(res)
     print("Updated successfully")
 def delete():
     print("Deleting particular student data:")
-    conn.execute("DELETE from std where ID=4")
+    conn.execute("DELETE from std1111 where ID=4")
     conn.commit()
-    cursor=conn.execute("SELECT * from std")
+    cursor=conn.execute("SELECT * from std1111")
     print("The table contents after deletion are:")
     res=cursor.fetchall()
     print(res)
@@ -58,9 +59,9 @@ query()
 update()
 delete()
     
-                 
-********************OUTPUT************************
-Opened database successfully
+    
+    ********************OUTPUT***********************
+    Opened database successfully
 Table creation:
 Table created successfully
 Inserting student information:
@@ -89,7 +90,7 @@ DEPT= MECH
 ---------------------------------------
 Retrives data of specific student
 Query result:
-[]
+[(1, 'riya', 5, 'CSE')]
 Updating student information:
 Upadted table contents are:
 [(1, 'riya', 5, 'CSE'), (2, 'ira', 6, 'ECE'), (3, 'siya', 3, 'EEE'), (4, 'ana', 4, 'MECH')]
@@ -98,3 +99,4 @@ Deleting particular student data:
 The table contents after deletion are:
 [(1, 'riya', 5, 'CSE'), (2, 'ira', 6, 'ECE'), (3, 'siya', 3, 'EEE')]
 Deleted successfully
+                 
